@@ -13,12 +13,15 @@ This personal experience opened my eyes to a broader systemic issue. Diabetes is
 Motivated by this problem, I designed and built 'Gluco' using p5.js, HTML/CSS, and RiTa.js. This interactive data visualization tool maps glycemic index (GI) and glycemic load (GL) values to a diverse range of global foods, allowing users to filter by cuisine type, generate diabetic-friendly meal combinations and more! The primary goal of this program is to raise awareness about the importance of maintaining a balanced, healthy daily diet to control blood sugar levels and help prevent the onset of diabetes in people who are not yet diagnosed.
 
 # How to use it?
-Click on each of the rings to learn more about the various foods. You can get specific information about GI value, carbohydrate content, and glycemic load. The colors represent the ranges of GI: green --> low GI (55 or less), yellow --> medium GI (56 to 69), and red --> high GI (70 or more). 
+Click on each of the rings to learn more about the various foods. You can get specific information about GI values, carbohydrate content, and GL values. The colors represent the ranges of GI: green --> low GI (55 or less), yellow --> medium GI (56 to 69), and red --> high GI (70 or more). 
 
 1. Using the radio buttons, you can sort the rings/food items based on certain types of cuisines.
 2. The dropdown menu allows you to sort the rings in ascending GI value order or in color buckets.
-3. The search bar enables you to type in queries like "under 30g of carbs" or "greater than 40g of carbs" and will output rings that matches with the threshold of carbs content you provided.
+3. The search bar enables you to type in queries like "under 30g of carbs" or "greater than 40g of carbs" and will output rings that matches the threshold of carbs content you provided.
 4. By clicking the 'Suggest Meal Plan' button, you'll receive a random combination of three meals for the day, with a combined glycemic load (GL) total of 100 or less.
 
-Here's a quick demo:
+Here's a quick demo: 
+[![Watch the video](https://img.youtube.com/vi/qwG3npOBe4o.jpg)](https://youtu.be/qwG3npOBe4o)
+
+
 
