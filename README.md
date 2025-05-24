@@ -20,7 +20,8 @@ Click on each of the rings to learn more about the various foods. You can get sp
 3. The search bar enables you to type in queries like "under 30g of carbs" or "greater than 40g of carbs" and will output rings that matches the threshold of carbs content you provided.
 4. By clicking the 'Suggest Meal Plan' button, you'll receive a random combination of three meals for the day, with a combined glycemic load (GL) total of 100 or less.
 
-Here's a quick demo: 
+Here's a quick demo: https://youtu.be/qwG3npOBe4o
+
 [![Watch the video](https://img.youtube.com/vi/qwG3npOBe4o/0.jpg)](https://youtu.be/qwG3npOBe4o)
 
 
