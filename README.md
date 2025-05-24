@@ -21,7 +21,7 @@ Click on each of the rings to learn more about the various foods. You can get sp
 4. By clicking the 'Suggest Meal Plan' button, you'll receive a random combination of three meals for the day, with a combined glycemic load (GL) total of 100 or less.
 
 Here's a quick demo: 
-[![Watch the video](https://img.youtube.com/vi/qwG3npOBe4o.jpg)](https://youtu.be/qwG3npOBe4o)
+[![Watch the video](https://img.youtube.com/vi/qwG3npOBe4o/0.jpg)](https://youtu.be/qwG3npOBe4o)
 
 
 
