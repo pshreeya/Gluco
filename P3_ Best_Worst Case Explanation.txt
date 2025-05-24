@@ -1,0 +1,44 @@
+﻿Google Doc Link: https://docs.google.com/document/d/13AI7hJxC1KIqS0fVpUuL6S3w47qj2nQHHKeuVzotmK0/edit?usp=sharing 
+
+In my program, I use two primary sorting algorithms: quicksort and bucket sort to effectively organize data based on glycemic values. 
+
+
+Quicksort is used for sorting glucose rings by their glycemic index (GI) values in ascending order. It follows a divide-and-conquer strategy by selecting a pivot (in this case, the GI value of the last ring in the array) and partitioning the data so that food items with GI values less than the pivot are moved to the left, and those greater than or equal are placed on the right. After partitioning, the algorithm recursively applies the same logic to the left and right subarrays using quickSortRings(), continuing until each subarray contains a single item. 
+
+
+The best-case time complexity, O(n log n), happens when the pivot consistently divides the array into two nearly equal halves. However, in the worst-case scenario, when the pivot is either the smallest or largest item (unbalanced partitions), the complexity degrades to O(n²). Despite this, quicksort is often preferred due to its in-place sorting nature and fast performance, especially for large unsorted data sets like the food data which is mapped to each of the rings in my program.
+
+
+On the other hand, bucket sort is utilized to categorize rings into three color-coded GI ‘buckets’: green (GI ≤ 55), yellow (55 < GI ≤ 69), and red (GI > 69). This method first distributes rings into buckets based on the preset GI ranges and then sorts the contents of the buckets if necessary. In my program, I prioritized visual grouping over internal bucket sorting. The primary goal was intuitive display rather than precise numerical ordering. 
+
+
+Bucket sort is efficient when data is uniformly distributed across buckets, yielding a best-case time complexity of O(n + k), where n is the number of items and k is the number of buckets. However, in the worst-case scenario, where many items fall into the same bucket and require complex sorting, it deteriorates to O(n²). For my use case, visualizing group-based data is a simple process. Therefore, the bucket sort algorithm aligns with best-case time complexity and enhances user interaction. 
+
+
+In terms of search algorithms, I integrated both linear search and binary search in my program.
+
+
+Linear search is used to filter rings based on cuisine types (e.g: Indian, Japanese, etc) by scanning each item in the food data CSV file for specific keywords. This method operates with a time complexity of O(n) and is suitable because the search is infrequent, dataset size (~1879 rows) is manageable, and cuisine values are diverse string fields rather than sortable numerical values. O(n) is the average case scenario and likely suggests that the target items are located in the middle of the array. The best case would be O(1), if the target item is found at the first position, only one comparison is needed. The worst case scenario happens if the target item is not present or is found at the very end of the array, the algorithm will have to compare the target with every item in the array.
+
+
+Binary search, in contrast, is applied for search input queries in finding rings with carbohydrate values "less than" or "greater than" a user-defined threshold. Since the data is pre-sorted by carbohydrate content, binary search becomes ideal with its O(log n) complexity. This method divides the array and repeatedly narrows the search range until the desired condition is met. The best case scenario with the time complexity of O(1) occurs when the target item is found in the first comparison (the middle item). The worst-case scenario happens when the target item is at the very beginning or end of the array and the search has to progress through all the halving steps, resulting in O(log n) time complexity.
+
+
+In my program, binary search also keeps track of the best match, making it suitable for responsive interactions where users filter rings based on numeric thresholds. For a dataset with nearly 1900 rows, binary search drastically reduces computation time compared to linear search and is more preferable for numeric-based queries.
+
+
+Additionally, a key feature of my project is its use of a recursive algorithm (where another helper function is called within the main function) to generate all possible three-meal combinations such that the total glycemic load (GL) does not exceed 100. 
+
+
+The specific recursive backtracking algorithm systematically builds combinations by selecting one item from the array of original rings and evaluating the sum of their GL values. If at any point the cumulative GL exceeds the threshold, the path is pruned (the recursive call stops, and the algorithm just backtracks and doesn’t fully restart). This early pruning strategy greatly enhances efficiency, especially in larger datasets like this one containing nearly 1900 rows. Without pruning, the time complexity would be O(n³), where n is the number of items per category. But with pruning, many invalid paths are skipped early, significantly reducing unnecessary computations. The recursive approach is efficient for combinatorial problems like in my use case for visualizing suggested meal plans in real-time.
+
+
+Potential optimizations include:
+1. Sorting food items in each category by ascending GL
+Increases the chance of finding valid combinations early, leading to earlier pruning and fewer recursive calls.
+2. Apply upper bounds early (bounding function)
+This helps to avoid unnecessary recursion if it's already impossible to stay within the threshold. Perhaps calculate the minimum possible GL of remaining categories. If ‘currentGL + minRemainingGL > threshold’, then stop.
+   3. Memoization (state caching)
+Avoids recomputing the same partial combinations. By using a key like ‘categoryIndex|currentGL’, the program can cache results. This works well when the number of categories is fixed and the GL threshold is tight. It is best used in even larger datasets (e.g: 2000+ rows).
+   4. Parallelization
+On modern CPUs, spreading out top-level recursive calls can drastically reduce computation time. One way to accomplish this is by parallelizing the first level of recursion (eg: let each carb selection be handled in its own thread or async call, and combine results at the end). It is best used when the meal combination search is not strictly real-time.

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Web Application Title -->
+    <title>Gluco App</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <!-- JavaScript libraries -->
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <script src="libraries/quicksettings.js"></script>
+    <script src="libraries/p5.gui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/rita"></script>
+   
+    <style>
+      body {
+        margin: 0;
+        overflow-y: scroll; 
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div id="header">
+      <!-- Left section: Cuisine radio filter buttons -->
+      <div class = "header-left" id="cuisineFilters">
+        <label><input type="radio" name="cuisine" value=""> All</label>
+        <label><input type="radio" name="cuisine" value="arabic"> Arabic</label>
+        <label><input type="radio" name="cuisine" value="indian"> Indian</label>
+        <label><input type="radio" name="cuisine" value="asian"> Asian</label>
+        <label><input type="radio" name="cuisine" value="australian"> Australian</label>
+        <label><input type="radio" name="cuisine" value="american"> American</label>
+        <label><input type="radio" name="cuisine" value="caribbean"> Caribbean</label>
+        <label><input type="radio" name="cuisine" value="pacific islanders"> Pacific Islanders</label>
+      </div>
+
+      <!-- Center section: Title and slogan -->
+      <div class = "header-center">
+      <h1>Welcome to Gluco!</h1>
+      <p>Click the rings to see how each food affects your blood sugar.</p>
+      </div>
+
+      <!-- Right section: Sorting dropdown and search input -->
+      <div class="header-right" id="controls">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect">
+          <option value="">-- Select --</option>
+          <option value="gi">GI Index (Low to High)</option>
+          <option value="green">Green (Low GI)</option>
+          <option value="yellow">Yellow (Medium GI)</option>
+          <option value="red">Red (High GI)</option>
+        </select>
+        <!-- Search input for filtering by carbs -->
+        <input id = "searchInput" type = "text" placeholder="'under/greater than __g of carbs'"></input>
+      </div>
+    </div>
+
+    <!-- Button to quickly scroll back to the top -->
+    <button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+    <script>
+      const backToTopBtn = document.getElementById("backToTop");
+      //show or hide button based on scroll position
+      window.onscroll = function () {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+          backToTopBtn.style.display = "block";
+        } else {
+          backToTopBtn.style.display = "none";
+        }
+      };
+      //scroll smoothly to the top when button is clicked
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      //updates the header title using RiTa with a random slogan attached beside it
+      window.addEventListener('DOMContentLoaded', () => {
+      const h1 = document.querySelector(".header-center h1");
+      //define a list of verbs and nouns related to glucose and diet to randomly pick from 
+      let verbs = ["balancing", "tracking", "taming"];
+      let nouns = ["glucose", "carbs", "GI"];
+      
+      //construct the final modified title using the string template
+      let greeting = "Welcome to Gluco — " + 
+                    //capitalize the first letter of the randomly selected verb using RiTa
+                    RiTa.capitalize(verbs[Math.floor(Math.random() * verbs.length)]) +
+                    " your " + 
+                    //randomly choose a noun from the nouns array
+                    nouns[Math.floor(Math.random() * nouns.length)] + "!";
+
+      h1.innerText = greeting;
+      });
+    </script>
+    <!-- Modular JavaScript files -->
+    <script src="card.js"></script>
+    <script src="ring.js"></script>
+    <script src="mediumRiskRing.js"></script>
+    <script src="urgentRiskRing.js"></script>
+    <script src="sketch.js"></script> 
+  </body>
+</html>
