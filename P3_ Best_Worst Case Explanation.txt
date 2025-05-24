@@ -1,6 +1,4 @@
-﻿Google Doc Link: https://docs.google.com/document/d/13AI7hJxC1KIqS0fVpUuL6S3w47qj2nQHHKeuVzotmK0/edit?usp=sharing 
-
-In my program, I use two primary sorting algorithms: quicksort and bucket sort to effectively organize data based on glycemic values. 
+﻿In my program, I use two primary sorting algorithms: quicksort and bucket sort to effectively organize data based on glycemic values. 
 
 
 Quicksort is used for sorting glucose rings by their glycemic index (GI) values in ascending order. It follows a divide-and-conquer strategy by selecting a pivot (in this case, the GI value of the last ring in the array) and partitioning the data so that food items with GI values less than the pivot are moved to the left, and those greater than or equal are placed on the right. After partitioning, the algorithm recursively applies the same logic to the left and right subarrays using quickSortRings(), continuing until each subarray contains a single item. 
