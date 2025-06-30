@@ -5,7 +5,7 @@
   Created: 12-May-2025
   Updated: 23-May-2025
 */
-
+//pkn
 //initializing global variables of arrays and variables
 let rings = []; 
 let originalRings = [];
